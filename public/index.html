@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% if(htmlWebpackPlugin.options.config.header) { %>
+    头部
+    <% } %>
+    <div><%= (htmlWebpackPlugin.options.config.title) %></div>
+    
+</head>
+
+<body>
+</body> 
+<div>这是实时的</div>
+<img src="../src/assets/image/17098ee545e78629.jpg" alt="">
+<% if(htmlWebpackPlugin.options.config.footer) { %>
+<div>footer</div>
+<% } %>
+</html>
