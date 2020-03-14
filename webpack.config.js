@@ -35,19 +35,18 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
         use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240, //小于10k 转baseurl
-              esModule: false,
-              name: '[name]_[hash:6].[ext]',
-              outputPath: 'assets'
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 10240, //10K
+                    esModule: false,
+                    name: '[name]_[hash:6].[ext]',
+                    outputPath: 'assets' 
+                }
             }
-          }
         ],
-
         exclude: /node_modules/
-      }
+    }
     ]
   },
   devServer: {
