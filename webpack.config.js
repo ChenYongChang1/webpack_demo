@@ -2,10 +2,18 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 const config = require('./public/config')[isDev ? 'dev' : 'build']
+const { CleanWebpackPlugin  } = require('clean-webpack-plugin')
+
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
+  entry: ['./src/index.js'],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[hash:8].js',
+    publicPath: '/' //通常事cdn地址
+  },
   module: {
     rules: [
       {
@@ -69,6 +77,9 @@ module.exports = {
         collapseWhitespace: false, //是否折叠空白
       },
       // hash: true //是否加上hash，默认是 false
-    })
+    }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns:['**/*', '!dll', '!dll/**'] //不删除dll目录下的文件
+  })
   ]
 }
